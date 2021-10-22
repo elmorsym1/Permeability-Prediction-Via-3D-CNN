@@ -39,30 +39,13 @@ t = time.time()
 # Choose GPU to use (8 available) - skip 0 (busy)
 gpus = tf.config.experimental.list_physical_devices('GPU')
 tf.config.experimental.set_visible_devices(gpus[4:8], 'GPU')
-
-#######################
-# To run
-
-# 65k (52k) - dataset_COM_BSS_KLS_BrSS_ELS_C1_C2_len_19005_size_100_bal_200_100_9600_len_65248 - DONE
-# 50k (40k) - dataset_COM_BSS_KLS_BrSS_ELS_C1_C2_len_19005_size_100_bal_200_100_9600_len_50290 - DONE
-# 38k (30k) - dataset_COM_BSS_KLS_BrSS_ELS_C1_C2_len_19005_size_100_bal_200_100_9600_len_38070 - DONE
-# 25k (20k) - dataset_COM_BSS_KLS_BrSS_ELS_C1_C2_len_19005_size_100_bal_200_100_9600_len_25380 - DONE
-# 13k (10k) - dataset_COM_BSS_KLS_BrSS_ELS_C1_C2_len_19005_size_100_bal_200_100_9600_len_13160 - DONE
-#######################
-# 65k (52k) - dataset_COM_BSS_KLS_BrSS_ELS_C1_C2_len_19005_size_100_bal_200_100_9600_len_65248 - Max pooling - DONE
-# 65k (52k) - dataset_COM_BSS_KLS_BrSS_ELS_C1_C2_len_19005_size_100_bal_200_100_9600_len_50290 - Ave pooling - DONE
-#######################
-# 65k (52k) - dataset_COM_BSS_KLS_BrSS_ELS_C1_C2_len_19005_size_100_bal_200_100_9600_len_65248 - FS 7  & FS 10 - DONE
-# 65k (52k) - dataset_COM_BSS_KLS_BrSS_ELS_C1_C2_len_19005_size_100_bal_200_100_9600_len_65248 - FS 10 & FS 15 - DONE
-# 65k (52k) - dataset_COM_BSS_KLS_BrSS_ELS_C1_C2_len_19005_size_100_bal_200_100_9600_len_65248 - FS 5  & FS 15 - DONE
-# 65k (52k) - dataset_COM_BSS_KLS_BrSS_ELS_C1_C2_len_19005_size_100_bal_200_100_9600_len_65248 - FS 7  & FS 20 - DONE
 #######################
 LT = 200  #mD
 UT = 10000 #mD
 validation_split = 0.2
 test_split = 0.2
 reduce_data = "false"   #true/false
-trial = '_InsNet_nobias_2B_BSS_KLS_BrSS_ELS_C1_C2_65K_FS7_FS20_1'
+trial = '_Test'
 use_bias = "False" #True/False
 # Options:
 # tragets [porosity, eff. Porosity, kx, ky, kz, Resolution]
@@ -265,9 +248,9 @@ def inception_module(layer_in, f1, f2, strides):
 	  # 7x7 conv
     conv7 = layer_in
     # conv3 = Conv3D(f1, 1, strides=1, padding='same', use_bias="False", activation='relu')(conv3)
-    conv7 = Conv3D(f1, 20, strides=strides, padding='same', use_bias="False")(conv7)
+    conv7 = Conv3D(f1, 15, strides=strides, padding='same', use_bias="False")(conv7)
     conv7 = Activation('relu')(conv7)
-    conv7 = Conv3D(f1, 20, strides=strides, padding='same', use_bias="False")(conv7)
+    conv7 = Conv3D(f1, 15, strides=strides, padding='same', use_bias="False")(conv7)
     conv7 = Activation('relu')(conv7)
 	  # 15x15 conv
     conv15 = layer_in
