@@ -1,6 +1,6 @@
 # Permeability-Prediction-Via-Multi-Scale-3D-CNN
 
-Data:
+**Data:
 
 The raw CT rock cores are obtained from the [Imperial Colloge portal](https://www.imperial.ac.uk/earth-science/research/research-groups/pore-scale-modelling/micro-ct-images-and-networks/).
 
