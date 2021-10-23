@@ -23,9 +23,7 @@ The sub-volumes are simulated for absolute permeability using OpenFOAM and their
     - rock_type = 
                    
                    {
-                   
                    1:Bentheimer Sandstone,
-                   
                    2:Ketton Limestone,
                    
                    3:Berea Sandstone,
