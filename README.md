@@ -2,7 +2,7 @@
 
 **Data:**
 
-The raw CT rock cores are obtained from the [Imperial Colloge portal](https://www.imperial.ac.uk/earth-science/research/research-groups/pore-scale-modelling/micro-ct-images-and-networks/).
+The raw CT rock cores are obtained from the [Imperial Colloge London portal](https://www.imperial.ac.uk/earth-science/research/research-groups/pore-scale-modelling/micro-ct-images-and-networks/).
 
 The CT rock cores are sub-sampled into 150x150x150 sub-volumes with a variable stride as follow,
   - Bentheimer Sandstone:  50 voxles 
