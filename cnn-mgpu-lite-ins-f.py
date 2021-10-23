@@ -28,6 +28,7 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from scipy.ndimage import zoom
+from functions import inception_module, conv_module, dense_module
 
 
 print(K.image_data_format()) #defult "channels_last"
@@ -242,32 +243,6 @@ reduce_lr = ReduceLROnPlateau(monitor='val_loss', mode='min', factor=0.2, patien
 
 callbacks = [csv_logger, model_checkpoint_callback]
 
-# 2 branches
-# function for creating an inception block
-def inception_module(layer_in, f1, f2, strides):
-	  # 7x7 conv
-    conv7 = layer_in
-    # conv3 = Conv3D(f1, 1, strides=1, padding='same', use_bias="False", activation='relu')(conv3)
-    conv7 = Conv3D(f1, 15, strides=strides, padding='same', use_bias="False")(conv7)
-    conv7 = Activation('relu')(conv7)
-    conv7 = Conv3D(f1, 15, strides=strides, padding='same', use_bias="False")(conv7)
-    conv7 = Activation('relu')(conv7)
-	  # 15x15 conv
-    conv15 = layer_in
-    # conv10 = Conv3D(f3_in, 1, strides=1, padding='same', use_bias="False", activation='relu')(conv10)
-    conv15 = Conv3D(f2, 7, strides=strides, padding='same', use_bias="False")(conv15)
-    conv15 = Activation('relu')(conv15)
-    conv15 = Conv3D(f2, 7, strides=strides, padding='same', use_bias="False")(conv15)
-    conv15 = Activation('relu')(conv15)
-	  # 3x3 max pooling
-    # skip = Conv3D(f1, 1, strides=strides, padding='same', use_bias="False", activation='relu')(layer_in)
-    # if strides == 2:
-    #    skip = AveragePooling3D(pool_size=2, strides=2, padding='same')(skip)
-	  # concatenate filters, assumes filters/channels last
-    # layer_out = concatenate([conv3, conv5, conv10, skip], axis=-1) # with skip connnection
-    layer_out = concatenate([conv7, conv15], axis=-1) # without skip connnection
-    return layer_out
-
 input_shape=(100, 100, 100, 1)
 # Use strategy for Multiple GPUs
 tf.debugging.set_log_device_placement(True)
@@ -277,33 +252,19 @@ with strategy.scope():
   # define model input
   input_image = Input(shape=(100, 100, 100, 1))
   # add inception module
-  layer = inception_module(input_image, 16, 16, strides=2)
+  layer = inception_module(input_image)
   layer = BatchNormalization()(layer)
-  # layer = SpatialDropout3D(0.1)(layer)
-  layer = Conv3D(16, 2, strides=2, padding='same', use_bias="False")(layer) #best result
-  # layer = AveragePooling3D(pool_size=2, strides=2, padding='same')(layer) #moderate
-  # layer = MaxPooling3D(pool_size=2, strides=2, padding='same')(layer)     #worse
+  layer = Conv3D(16, 2, strides=2, padding='same', use_bias="False")(layer)
   # add Conv3D block
-  layer = Conv3D(32, 5, strides=1, padding='same', use_bias="False")(layer)
-  layer = Activation('relu')(layer)
-  # layer = BatchNormalization()(layer)
-  layer = Conv3D(32, 5, strides=1, padding='same', use_bias="False")(layer)
-  layer = Activation('relu')(layer)
+  layer = conv_module(layer)
   layer = BatchNormalization()(layer)
   layer = SpatialDropout3D(0.1)(layer)
-  layer = Conv3D(32, 2, strides=2, padding='same', use_bias="False")(layer) #best result
-  # layer = AveragePooling3D(pool_size=2, strides=2, padding='same')(layer) #moderate
-  # layer = MaxPooling3D(pool_size=2, strides=2, padding='same')(layer)     #worse
-  
+  layer = Conv3D(32, 2, strides=2, padding='same', use_bias="False")(layer)
   # FCL part
   layer = Flatten()(layer)
-  layer = Dense(128, use_bias=use_bias, activation='relu')(layer)
-  layer = Dropout(0.1)(layer)
-  layer = Dense(64, use_bias=use_bias, activation='relu')(layer)
+  layer = dense_module(layer)
   layer = Dense(1)(layer)
 
-  
-  
   # create model
   model = Model(inputs=input_image, outputs=layer)
 
