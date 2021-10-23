@@ -25,17 +25,13 @@ The sub-volumes are simulated for absolute permeability using OpenFOAM and their
                    {
                    1:Bentheimer Sandstone,
                    2:Ketton Limestone,
-                   
                    3:Berea Sandstone,
-                   
-                   4:Doddington Sandstone,
-                   
+                   4:Doddington Sandstone, 
                    5:Estaillades Limestone,
-                   
                    6:Carbonate (C1),
-                   
                    7:Carbonate (C2)
                    }
+                   
     - AR = anisotropy ratio
     - DOA = degree of anisotropy
     - k = absolute permeability
