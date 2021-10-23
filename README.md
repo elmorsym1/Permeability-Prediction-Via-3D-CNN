@@ -35,5 +35,4 @@ The sub-volumes are simulated for absolute permeability using OpenFOAM and their
     - k = absolute permeability
 
 **Code:**
-
-Code willbe provided by request, eamil:elmorsym@mcmaster.ca
+Code willbe provided by request, eamil: elmorsym@mcmaster.ca
