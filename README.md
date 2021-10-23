@@ -44,4 +44,4 @@ The sub-volumes are simulated for absolute permeability using OpenFOAM and their
     - DOA = degree of anisotropy
     - k = absolute permeability
 
-**ML Code: will be provided by request, eamil: elmorsym@mcmaster.ca**
+**ML Code: Available by request, eamil: elmorsym@mcmaster.ca**
