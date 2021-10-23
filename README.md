@@ -2,7 +2,7 @@
 
 **Data:**
 
-The data contains sub-volumes of the following rocks,
+The data includes sub-volumes of the following rocks,
   - Bentheimer Sandstone 
   - Ketton Limestone
   - Berea Sandstone
