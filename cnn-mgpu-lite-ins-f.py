@@ -45,7 +45,6 @@ LT = 200  #mD
 UT = 10000 #mD
 validation_split = 0.2
 test_split = 0.2
-reduce_data = "false"   #true/false
 trial = '_Test'
 use_bias = "False" #True/False
 # Options:
@@ -83,27 +82,6 @@ info[:, 8] = DOA
 
 
 data_len = len(y_train)
-
-
-
-# Reduce data
-if reduce_data == "true":
-  indices = np.arange(0, data_len)
-  indi_rem_1 = np.array(np.where(y_train < LT), dtype=int)
-  indi_rem_2 = np.array(np.where(y_train > UT), dtype=int)
-  indices_remove = np.append(indi_rem_1, indi_rem_2)
-  del indi_rem_1, indi_rem_2
-  indices_reduced = np.delete(indices, indices_remove, axis=0)
-  x_train = x_train[indices_reduced, :, :, :]
-  y_train = y_train[indices_reduced]
-  casenames = casenames[indices_reduced]
-  direction = direction[indices_reduced]
-  info = info[indices_reduced, :]
-  data_len = len(y_train)
-
-
-
-
 
 print("Data length = "+str(len(y_train))+" samples")
 
