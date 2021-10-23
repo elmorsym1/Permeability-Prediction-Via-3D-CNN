@@ -1,18 +1,16 @@
 # Permeability-Prediction-Via-3D-CNN
 
 **Data:**
+The data contains sub-volumes of the following rocks,
+  - Bentheimer Sandstone 
+  - Ketton Limestone
+  - Berea Sandstone
+  - Doddington Sandstone
+  - Estaillades Limestone
+  - Carbonate (C1)
+  - Carbonate (C2)
 
 The raw CT rock cores are obtained from the [Imperial Colloge London portal](https://www.imperial.ac.uk/earth-science/research/research-groups/pore-scale-modelling/micro-ct-images-and-networks/).
-
-The CT rock cores are sub-sampled into 150x150x150 sub-volumes with a variable stride as follow,
-  - Bentheimer Sandstone:  50 voxles 
-  - Ketton Limestone:      50 voxles
-  - Berea Sandstone:       25 voxles
-  - Doddington Sandstone:  50 voxles 
-  - Estaillades Limestone: 50 voxles
-  - Carbonate (C1):        50 voxles
-  - Carbonate (C2):        50 voxles
-
 
 The sub-volumes are simulated for absolute permeability using OpenFOAM and their results are summerized in the provided excel sheet having the following information,
 
