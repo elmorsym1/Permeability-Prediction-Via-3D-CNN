@@ -1,4 +1,4 @@
-# Permeability-Prediction-Via-Multi-Scale-3D-CNN
+# Permeability-Prediction-Via-3D-CNN
 
 **Data:**
 
