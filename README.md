@@ -21,7 +21,6 @@ The sub-volumes are simulated for absolute permeability using OpenFOAM and their
     - porosity = ratio of void fraction
     - eff_porosity = the connected porosity
     - rock_type = {
-    
                    1:Bentheimer Sandstone,
                    
                    2:Ketton Limestone,
@@ -35,7 +34,6 @@ The sub-volumes are simulated for absolute permeability using OpenFOAM and their
                    6:Carbonate (C1),
                    
                    7:Carbonate (C2)
-                   
                    }
     - AR = anisotropy ratio
     - DOA = degree of anisotropy
