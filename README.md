@@ -1,4 +1,4 @@
-# Permeability-Prediction-Via-3D-CNN
+# Generalizable-Permeability-Prediction-Via-Novel-Multi-Scale-3D-CNN
 
 **Data:**
 
@@ -43,3 +43,6 @@ The sub-volumes are simulated for absolute permeability using OpenFOAM and their
     - AR = anisotropy ratio
     - DOA = degree of anisotropy
     - k = absolute permeability
+
+This work has been published under the American Geophysical Union flagship journal: Water Rseourses Research.
+Paper link: https://www.researchgate.net/publication/359154090_Generalizable_Permeability_Prediction_of_Digital_Porous_Media_via_a_Novel_Multi-Scale_3D_Convolutional_Neural_Network
