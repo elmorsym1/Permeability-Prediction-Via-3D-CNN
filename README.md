@@ -44,5 +44,8 @@ The sub-volumes are simulated for absolute permeability using OpenFOAM and their
     - DOA = degree of anisotropy
     - k = absolute permeability
 
+
+
 This work has been published under the American Geophysical Union flagship journal: Water Rseourses Research.
+
 Paper link: [Generalizable Permeability Prediction of Digital Porous Media via a Novel Multi‐Scale 3D Convolutional Neural Network](https://www.researchgate.net/publication/359154090_Generalizable_Permeability_Prediction_of_Digital_Porous_Media_via_a_Novel_Multi-Scale_3D_Convolutional_Neural_Network).
